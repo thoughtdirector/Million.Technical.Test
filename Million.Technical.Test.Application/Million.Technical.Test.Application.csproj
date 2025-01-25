@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Million.Technical.Test.Domain\Million.Technical.Test.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Handlers\" />
+    <Folder Include="Commands\Validations\" />
+    <Folder Include="Queries\Handlers\" />
+    <Folder Include="Queries\Responses\" />
+    <Folder Include="_Resourses\Messages\" />
+  </ItemGroup>
+
+</Project>

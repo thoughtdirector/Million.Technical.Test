@@ -1,0 +1,6 @@
+@Million.Technical.Test_HostAddress = http://localhost:5142
+
+GET {{Million.Technical.Test_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
