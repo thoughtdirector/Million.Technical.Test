@@ -5,7 +5,6 @@
         public Guid IdPropertyImage { get; set; }
         public byte[]? ImageData { get; set; }
         public bool Enabled { get; set; }
-        public bool IsPrimary { get; set; }
 
         public Guid IdProperty { get; set; }
         public virtual Property? Property { get; set; }

@@ -14,9 +14,6 @@ namespace Million.Technical.Test.Application.Commands
         public string? CodeInternal { get; init; }
         public int? Year { get; init; }
         public Guid? IdOwner { get; init; }
-        public IFormFile? NewImage { get; init; }
-        public bool? IsPrimaryImage { get; init; }
-
         public PropertyTraceInfo? Trace { get; init; }
     }
 }

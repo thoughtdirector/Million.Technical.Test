@@ -61,13 +61,6 @@ namespace Million.Technical.Test.Infrastructure.Validators.Commands
                     .WithMessage("Owner Id must be a valid GUID format");
             });
 
-            When(x => x.NewImage != null, () =>
-            {
-                RuleFor(x => x.NewImage!.Length)
-                    .LessThanOrEqualTo(ValidationConstants.MAX_IMAGE_SIZE_BYTES)
-                    .WithMessage($"Image size must not exceed {ValidationConstants.MAX_IMAGE_SIZE_BYTES / (1024 * 1024)}MB");
-            });
-
             When(x => x.Trace != null, () =>
             {
                 RuleFor(x => x.Trace!.DateSale)
