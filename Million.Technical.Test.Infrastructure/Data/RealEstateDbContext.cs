@@ -3,14 +3,14 @@ using Million.Technical.Test.Domain.Entities;
 
 namespace Million.Technical.Test.Infrastructure.Data
 {
-    public class PropertiesDbContext : DbContext
+    public class RealEstateDbContext : DbContext
     {
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Property> Properties { get; set; }
         public DbSet<PropertyImage> PropertyImages { get; set; }
         public DbSet<PropertyTrace> PropertyTraces { get; set; }
 
-        public PropertiesDbContext(DbContextOptions<PropertiesDbContext> options)
+        public RealEstateDbContext(DbContextOptions<RealEstateDbContext> options)
             : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

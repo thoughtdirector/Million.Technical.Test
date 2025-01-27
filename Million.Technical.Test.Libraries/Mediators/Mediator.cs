@@ -1,7 +1,7 @@
 ﻿using Million.Technical.Test.Libraries.Cqs.Request;
 using System.Collections.Concurrent;
 
-namespace Million.Technical.Test.Libraries.Mediator;
+namespace Million.Technical.Test.Libraries.Mediators;
 
 public class Mediator
 {
@@ -19,7 +19,7 @@ public class Mediator
     public async Task<TResult> SendAsync<TRequest, TResult>(TRequest request)
         where TRequest : IRequest
     {
-      if (_handlers.TryGetValue(typeof(TRequest), out var handler))
+        if (_handlers.TryGetValue(typeof(TRequest), out var handler))
         {
             if (handler is IRequestHandler<TRequest, TResult> typedHandler)
             {

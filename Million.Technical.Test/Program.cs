@@ -1,15 +1,42 @@
+using Million.Technical.Test.Api.DependencyInjection;
+using Million.Technical.Test.Application.Commands;
+using Million.Technical.Test.Libraries.Cqs.Request;
+using Million.Technical.Test.Libraries.Mediators;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<Mediator>();
+builder.Services.AddSingleton(provider =>
+{
+    var mediator = new Mediator();
+
+    mediator.Register<CreatePropertyCommand, Guid, IRequestHandler<CreatePropertyCommand, Guid>>(
+        provider.GetRequiredService<IRequestHandler<CreatePropertyCommand, Guid>>());
+
+    mediator.Register<CreateOwnerCommand, Guid, IRequestHandler<CreateOwnerCommand, Guid>>(
+        provider.GetRequiredService<IRequestHandler<CreateOwnerCommand, Guid>>());
+    return mediator;
+});
+
+builder.Services.AddCors(options =>
+  {
+      options.AddPolicy("AllowAll", policy =>
+      {
+          policy
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+      });
+  });
+
+builder.Inject();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -22,4 +49,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();
