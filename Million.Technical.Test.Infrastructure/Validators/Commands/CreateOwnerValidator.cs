@@ -15,11 +15,6 @@ namespace Million.Technical.Test.Infrastructure.Validators.Commands
                 .MaximumLength(ValidationConstants.MAX_PROPERTY_NAME_LENGTH).WithMessage("Owner name cannot exceed 100 characters")
                 .MinimumLength(ValidationConstants.MIN_PROPERTY_NAME_LENGTH).WithMessage("Owner name must be at least 3 characters");
 
-            RuleFor(x => x.PhotoName)
-               .MaximumLength(ValidationConstants.MAX_PROPERTY_NAME_LENGTH).WithMessage("Photo name cannot exceed 100 characters")
-               .MinimumLength(ValidationConstants.MIN_PROPERTY_NAME_LENGTH).WithMessage("Photo name must be at least 3 characters")
-               .Matches(ValidationConstants.PHOTO_NAME_REGEX_PATTERN).WithMessage("Photo name must have a valid extension");
-
             RuleFor(x => x.Address)
                 .NotNull()
                 .NotEmpty().WithMessage("Owner address is required")

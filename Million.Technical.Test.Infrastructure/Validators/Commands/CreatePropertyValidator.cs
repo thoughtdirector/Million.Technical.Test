@@ -37,7 +37,9 @@ namespace Million.Technical.Test.Infrastructure.Validators.Commands
 
             RuleFor(x => x.IdOwner)
                 .NotNull()
-                .NotEmpty().WithMessage("Guid is required");
+                .NotEmpty().WithMessage("Owner Id is required")
+                .Must(id => Guid.TryParse(id.ToString(), out _))
+                .WithMessage("Owner Id must be a valid GUID format");
         }
 
         public void ValidateAndThrow(CreatePropertyCommand command)

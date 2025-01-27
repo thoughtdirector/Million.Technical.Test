@@ -21,7 +21,7 @@ namespace Million.Technical.Test.Application.Commands.Handlers
             {
                 using var memoryStream = new MemoryStream();
                 await command.Photo.CopyToAsync(memoryStream);
-                photoData = await _imageService.CompressImageAsync(memoryStream.ToArray(), command.PhotoName!);
+                photoData = await _imageService.CompressImageAsync(memoryStream.ToArray(), command.Photo.FileName);
             }
 
             Owner owner = new()

@@ -7,9 +7,9 @@ namespace Million.Technical.Test.Application.Commands
         public Guid? Id { get; init; }
         public required string Name { get; init; }
         public required string Address { get; init; }
-        public decimal Price { get; init; }
+        public required decimal Price { get; init; }
         public required string CodeInternal { get; init; }
-        public int Year { get; init; }
-        public Guid IdOwner { get; init; }
+        public required int Year { get; init; }
+        public required Guid IdOwner { get; init; }
     }
 }

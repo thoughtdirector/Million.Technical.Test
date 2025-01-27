@@ -10,7 +10,6 @@ namespace Million.Technical.Test.Application.Commands
         public required string Address { get; init; }
         public required DateTime Birthday { get; init; }
         public IFormFile? Photo { get; init; }
-        public string? PhotoName { get; init; }
     }
 
 }
