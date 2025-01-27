@@ -36,8 +36,15 @@ public class Repository<TEntity> : IRepository<TEntity>
 
     public async Task UpdateAsync(TEntity entity)
     {
-        _dbSet.Update(entity);
-        await _context.SaveChangesAsync();
+        try
+        {
+            _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException($"Error creating {typeof(TEntity).Name} ", ex);
+        }
     }
 
     public async Task DeleteAsync(TEntity entity)

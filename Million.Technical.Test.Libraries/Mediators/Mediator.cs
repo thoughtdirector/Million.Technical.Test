@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Million.Technical.Test.Libraries.Cqs.Request;
-using System.Collections.Concurrent;
 
 namespace Million.Technical.Test.Libraries.Mediators;
 

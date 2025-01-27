@@ -1,9 +1,4 @@
 using Million.Technical.Test.Api.DependencyInjection;
-using Million.Technical.Test.Application.Commands.Handlers;
-using Million.Technical.Test.Application.Commands.Validations;
-using Million.Technical.Test.Application.Commands;
-using Million.Technical.Test.Infrastructure.Validators.Commands;
-using Million.Technical.Test.Libraries.Cqs.Request;
 using Million.Technical.Test.Libraries.Mediators;
 
 var builder = WebApplication.CreateBuilder(args);
