@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Million.Technical.Test.Application.Commands.Models
+﻿namespace Million.Technical.Test.Application.Commands.Models
 {
     public class PropertyTraceInfo
     {

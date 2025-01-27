@@ -1,5 +1,4 @@
 ﻿using Million.Technical.Test.Application.Commands.Validations;
-using Million.Technical.Test.Application.Shared.Methods;
 using Million.Technical.Test.Domain.Entities;
 using Million.Technical.Test.Libraries.Cqs.Request;
 using Million.Technical.Test.Libraries.Exceptions;
@@ -11,8 +10,7 @@ namespace Million.Technical.Test.Application.Commands.Handlers
             (IRepository<Property> _propertyRepository,
             IRepository<Owner> _ownerRepository,
             IRepository<PropertyTrace> _traceRepository,
-            IUpdatePropertyValidator _validator,
-            IImageService _imageService) : IRequestHandler<UpdatePropertyCommand, Guid>
+            IUpdatePropertyValidator _validator) : IRequestHandler<UpdatePropertyCommand, Guid>
     {
         public async Task<Guid> HandleAsync(UpdatePropertyCommand command)
         {
@@ -34,7 +32,6 @@ namespace Million.Technical.Test.Application.Commands.Handlers
                 property.IdOwner = command.IdOwner.Value;
             }
 
-           
             if (command.Trace != null)
             {
                 var propertyTrace = new PropertyTrace

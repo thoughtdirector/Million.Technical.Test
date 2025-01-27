@@ -52,4 +52,6 @@ public class Repository<TEntity> : IRepository<TEntity>
         _dbSet.Remove(entity);
         await _context.SaveChangesAsync();
     }
+
+    public IQueryable<TEntity> GetQueryable() => _dbSet.AsQueryable();
 }

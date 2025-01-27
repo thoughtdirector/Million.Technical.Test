@@ -1,11 +1,6 @@
 ﻿using FluentValidation;
-using Million.Technical.Test.Application.Commands.Validations;
 using Million.Technical.Test.Application.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Million.Technical.Test.Application.Commands.Validations;
 using Million.Technical.Test.Infrastructure.Validators.Constants;
 
 namespace Million.Technical.Test.Infrastructure.Validators.Commands
@@ -75,18 +70,18 @@ namespace Million.Technical.Test.Infrastructure.Validators.Commands
 
             When(x => x.Trace != null, () =>
             {
-                RuleFor(x => x.Trace.DateSale)
+                RuleFor(x => x.Trace!.DateSale)
                     .LessThanOrEqualTo(DateTime.UtcNow)
                     .WithMessage("Sale date cannot be in the future");
 
-                RuleFor(x => x.Trace.Name)
+                RuleFor(x => x.Trace!.Name)
                     .NotEmpty()
                     .MaximumLength(ValidationConstants.MAX_PROPERTY_NAME_LENGTH);
 
-                RuleFor(x => x.Trace.Value)
+                RuleFor(x => x.Trace!.Value)
                     .GreaterThan(ValidationConstants.MIN_PRICE);
 
-                RuleFor(x => x.Trace.Tax)
+                RuleFor(x => x.Trace!.Tax)
                     .GreaterThanOrEqualTo(ValidationConstants.MIN_PRICE);
             });
         }
