@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Million.Technical.Test.Application.Commands;
+using Million.Technical.Test.Application.Queries;
+using Million.Technical.Test.Application.Queries.Responses;
 using Million.Technical.Test.Libraries.Exceptions;
 using Million.Technical.Test.Libraries.Mediators;
 
@@ -131,6 +133,32 @@ namespace Million.Technical.Test.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "An error occurred while updating the property");
+            }
+        }
+
+        [HttpGet("property/{propertyId}/image/{imageId}")]
+        [Produces("image/jpeg")]
+        public async Task<IActionResult> GetPropertyImage(Guid propertyId, Guid imageId)
+        {
+            try
+            {
+                GetPropertyImageQuery query = new() { PropertyId = propertyId, ImageId = imageId };
+
+                var imageData = await _mediator.SendAsync<GetPropertyImageQuery, byte[]>(query);
+
+                if (imageData == null || imageData.Length == 0)
+                    return NotFound("Image not found");
+
+                return File(imageData, "image/jpeg");
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "An error occurred while retrieving the image");
             }
         }
     }
