@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Million.Technical.Test.Application.Commands.Models;
+﻿using Million.Technical.Test.Application.Commands.Models;
 using Million.Technical.Test.Libraries.Cqs.Request.Commands;
 
 namespace Million.Technical.Test.Application.Commands
