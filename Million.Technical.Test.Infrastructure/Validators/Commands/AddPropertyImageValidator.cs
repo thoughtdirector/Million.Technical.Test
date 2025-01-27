@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using Million.Technical.Test.Application.Commands.Validations;
 using Million.Technical.Test.Application.Commands;
+using Million.Technical.Test.Application.Commands.Validations;
 using Million.Technical.Test.Infrastructure.Validators.Constants;
 
 namespace Million.Technical.Test.Infrastructure.Validators.Commands

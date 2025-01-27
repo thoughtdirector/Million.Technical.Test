@@ -11,5 +11,4 @@ namespace Million.Technical.Test.Application.Commands
         public required DateTime Birthday { get; init; }
         public IFormFile? Photo { get; init; }
     }
-
 }

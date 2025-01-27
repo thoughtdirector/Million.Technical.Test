@@ -29,7 +29,7 @@ namespace Million.Technical.Test.Application.Commands.Handlers
                 imageData = await _imageService.CompressImageAsync(memoryStream.ToArray(), command.Image.FileName!);
             }
 
-            PropertyImage propertyImage = new() 
+            PropertyImage propertyImage = new()
             {
                 IdPropertyImage = Guid.NewGuid(),
                 IdProperty = command.PropertyId,

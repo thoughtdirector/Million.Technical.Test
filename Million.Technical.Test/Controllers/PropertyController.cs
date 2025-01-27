@@ -19,7 +19,7 @@ namespace Million.Technical.Test.Api.Controllers
 
         [HttpPost("create_property")]
         public async Task<ActionResult<Guid>> CreateProperty(
-            [FromForm] CreatePropertyCommand command)
+            [FromBody] CreatePropertyCommand command)
         {
             try
             {
