@@ -60,6 +60,7 @@ namespace Million.Technical.Test.Api.Controllers
                     "An error occurred while adding the property image");
             }
         }
+
         [HttpPost("create_property_trace")]
         public async Task<ActionResult<Guid>> CreatePropertyTrace(
            [FromBody] CreatePropertyTraceCommand command)
@@ -83,5 +84,30 @@ namespace Million.Technical.Test.Api.Controllers
                     "An error occurred while creating the property trace");
             }
         }
+
+        [HttpPost("change_property_price")]
+        public async Task<ActionResult<string>> ChangePropertyPrice(
+            [FromBody] ChangePropertyPriceCommand command)
+        {
+            try
+            {
+                var response = await _mediator.SendAsync<ChangePropertyPriceCommand, string>(command);
+                return response;
+            }
+            catch (FluentValidation.ValidationException ex)
+            {
+                return BadRequest(ex.Errors.Select(e => new { e.PropertyName, e.ErrorMessage }));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "An error occurred while changing the property price");
+            }
+        }
+
     }
 }
