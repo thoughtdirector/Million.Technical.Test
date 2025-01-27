@@ -12,7 +12,7 @@ using Million.Technical.Test.Infrastructure.Data;
 namespace Million.Technical.Test.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    [Migration("20250127111934_InitialMigration")]
+    [Migration("20250127212234_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -103,9 +103,6 @@ namespace Million.Technical.Test.Infrastructure.Data.Migrations
 
                     b.Property<byte[]>("ImageData")
                         .HasColumnType("varbinary(max)");
-
-                    b.Property<bool>("IsPrimary")
-                        .HasColumnType("bit");
 
                     b.HasKey("IdPropertyImage");
 

@@ -101,9 +101,6 @@ namespace Million.Technical.Test.Infrastructure.Data.Migrations
                     b.Property<byte[]>("ImageData")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<bool>("IsPrimary")
-                        .HasColumnType("bit");
-
                     b.HasKey("IdPropertyImage");
 
                     b.HasIndex("IdProperty");

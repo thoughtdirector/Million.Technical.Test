@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -55,7 +56,6 @@ namespace Million.Technical.Test.Infrastructure.Data.Migrations
                     IdPropertyImage = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Enabled = table.Column<bool>(type: "bit", nullable: false),
-                    IsPrimary = table.Column<bool>(type: "bit", nullable: false),
                     IdProperty = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
