@@ -60,5 +60,28 @@ namespace Million.Technical.Test.Api.Controllers
                     "An error occurred while adding the property image");
             }
         }
+        [HttpPost("create_property_trace")]
+        public async Task<ActionResult<Guid>> CreatePropertyTrace(
+           [FromBody] CreatePropertyTraceCommand command)
+        {
+            try
+            {
+                var traceId = await _mediator.SendAsync<CreatePropertyTraceCommand, Guid>(command);
+                return traceId;
+            }
+            catch (FluentValidation.ValidationException ex)
+            {
+                return BadRequest(ex.Errors.Select(e => new { e.PropertyName, e.ErrorMessage }));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "An error occurred while creating the property trace");
+            }
+        }
     }
 }
