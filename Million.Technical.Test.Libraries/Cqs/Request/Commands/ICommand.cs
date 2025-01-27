@@ -2,6 +2,6 @@
 {
     public interface ICommand<TResult> : IRequest
     {
-        Guid Id { get; }
+        Guid? Id { get; }
     }
 }

@@ -14,17 +14,24 @@ public class Repository<TEntity> : IRepository<TEntity>
         _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<TEntity?> GetByIdAsync(int id) =>
+    public async Task<TEntity?> GetByIdAsync(Guid id) =>
         await _dbSet.FindAsync(id);
 
     public async Task<IEnumerable<TEntity>?> GetAllAsync() =>
         await _dbSet.ToListAsync();
 
-    public async Task<TEntity> AddAsync(TEntity entity)
+    public async Task<TEntity> CreateAsync(TEntity entity)
     {
-        await _dbSet.AddAsync(entity);
-        await _context.SaveChangesAsync();
-        return entity;
+        try
+        {
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException($"Error creating {typeof(TEntity).Name} ", ex);
+        }
     }
 
     public async Task UpdateAsync(TEntity entity)

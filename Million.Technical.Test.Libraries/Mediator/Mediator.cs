@@ -11,9 +11,6 @@ public class Mediator
         where TRequest : IRequest
         where THandler : IRequestHandler<TRequest, TResult>
     {
-        if (handler == null)
-            throw new ArgumentNullException(nameof(handler));
-
         var key = typeof(TRequest);
         if (!_handlers.TryAdd(key, handler))
             throw new InvalidOperationException($"A handler for {key.Name} is already registered.");
@@ -22,10 +19,7 @@ public class Mediator
     public async Task<TResult> SendAsync<TRequest, TResult>(TRequest request)
         where TRequest : IRequest
     {
-        if (request == null)
-            throw new ArgumentNullException(nameof(request));
-
-        if (_handlers.TryGetValue(typeof(TRequest), out var handler))
+      if (_handlers.TryGetValue(typeof(TRequest), out var handler))
         {
             if (handler is IRequestHandler<TRequest, TResult> typedHandler)
             {
