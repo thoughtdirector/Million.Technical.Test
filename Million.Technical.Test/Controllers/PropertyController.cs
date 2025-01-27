@@ -87,7 +87,7 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
-        [HttpPost("change_property_price")]
+        [HttpPut("change_property_price")]
         public async Task<ActionResult<string>> ChangePropertyPrice(
             [FromBody] ChangePropertyPriceCommand command)
         {

@@ -43,7 +43,7 @@ public class Repository<TEntity> : IRepository<TEntity>
         }
         catch (Exception ex)
         {
-            throw new ApplicationException($"Error creating {typeof(TEntity).Name} ", ex);
+            throw new ApplicationException($"Error updating {typeof(TEntity).Name} ", ex);
         }
     }
 
