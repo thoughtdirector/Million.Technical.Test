@@ -3,7 +3,7 @@
     public static class ValidationConstants
     {
         public const string INTERNAL_CODE_REGEX_PATTERN = @"^[A-Za-z0-9\-_]+$";
-        public const string PHOTO_NAME_REGEX_PATTERN = @"^[A-Za-z0-9\-_]+$";
+        public const string PHOTO_NAME_REGEX_PATTERN = @"^.+\.(jpg|jpeg|png)$";
         public const decimal MIN_PRICE = 0.01m;
         public const int MIN_YEAR = 1800;
         public const int MAX_INTERNAL_CODE_LENGTH = 50;
