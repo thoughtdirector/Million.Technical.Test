@@ -109,5 +109,29 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
+
+        [HttpPut("update_property")]
+        public async Task<ActionResult<Guid>> UpdateProperty(
+            [FromBody] UpdatePropertyCommand command)
+        {
+            try
+            {
+                var propertyId = await _mediator.SendAsync<UpdatePropertyCommand, Guid>(command);
+                return propertyId;
+            }
+            catch (FluentValidation.ValidationException ex)
+            {
+                return BadRequest(ex.Errors.Select(e => new { e.PropertyName, e.ErrorMessage }));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "An error occurred while updating the property");
+            }
+        }
     }
 }
