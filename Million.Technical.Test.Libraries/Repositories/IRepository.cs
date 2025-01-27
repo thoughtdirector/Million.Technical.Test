@@ -1,4 +1,4 @@
-﻿namespace Million.Technical.Test.Libraries.Repository;
+﻿namespace Million.Technical.Test.Libraries.Repositories;
 
 public interface IRepository<TEntity> where TEntity : class
 {

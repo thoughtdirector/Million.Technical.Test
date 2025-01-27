@@ -1,6 +1,4 @@
-﻿using Million.Technical.Test.Libraries.DependencyInjection;
-
-namespace Million.Technical.Test.Api.DependencyInjection
+﻿namespace Million.Technical.Test.Api.DependencyInjection
 {
     public static class DependencyInjection
     {
@@ -8,6 +6,7 @@ namespace Million.Technical.Test.Api.DependencyInjection
         {
             BaseInjections.InjectBase(builder);
             CommandsInjections.InjectCommands(builder);
+            QueriesInjections.InjectQueries(builder);
         }
     }
 }

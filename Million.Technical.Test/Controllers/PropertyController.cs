@@ -111,7 +111,6 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
-
         [HttpPut("update_property")]
         public async Task<ActionResult<Guid>> UpdateProperty(
             [FromBody] UpdatePropertyCommand command)
@@ -159,6 +158,22 @@ namespace Million.Technical.Test.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "An error occurred while retrieving the image");
+            }
+        }
+
+        [HttpGet("get_properies_by_filters")]
+        public async Task<ActionResult<IEnumerable<PropertyDetailDto>>> GetProperties(
+       [FromQuery] GetPropertiesQuery query)
+        {
+            try
+            {
+                var properties = await _mediator.SendAsync<GetPropertiesQuery, IEnumerable<PropertyDetailDto>>(query);
+                return Ok(properties);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new { message = "An error occurred while retrieving properties", error = ex.Message });
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Million.Technical.Test.Libraries.Repository;
+namespace Million.Technical.Test.Libraries.Repositories;
 
 public class Repository<TEntity> : IRepository<TEntity>
     where TEntity : class

@@ -3,7 +3,7 @@ using Million.Technical.Test.Application.Shared.Methods;
 using Million.Technical.Test.Domain.Entities;
 using Million.Technical.Test.Libraries.Cqs.Request;
 using Million.Technical.Test.Libraries.Exceptions;
-using Million.Technical.Test.Libraries.Repository;
+using Million.Technical.Test.Libraries.Repositories;
 
 namespace Million.Technical.Test.Application.Commands.Handlers
 {

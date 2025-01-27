@@ -2,9 +2,9 @@
 using Million.Technical.Test.Application.Shared.Methods;
 using Million.Technical.Test.Infrastructure.Data;
 using Million.Technical.Test.Infrastructure.Shared.Methods;
-using Million.Technical.Test.Libraries.Repository;
+using Million.Technical.Test.Libraries.Repositories;
 
-namespace Million.Technical.Test.Libraries.DependencyInjection
+namespace Million.Technical.Test.Api.DependencyInjection
 {
     public static class BaseInjections
     {
