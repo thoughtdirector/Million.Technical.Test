@@ -8,14 +8,17 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Million.Technical.Test.Domain\Million.Technical.Test.Domain.csproj" />
+    <ProjectReference Include="..\Million.Technical.Test.Libraries\Million.Technical.Test.Libraries.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Handlers\" />
-    <Folder Include="Commands\Validations\" />
     <Folder Include="Queries\Handlers\" />
     <Folder Include="Queries\Responses\" />
     <Folder Include="_Resourses\Messages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
   </ItemGroup>
 
 </Project>
