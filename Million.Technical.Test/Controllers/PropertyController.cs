@@ -23,6 +23,7 @@ namespace Million.Technical.Test.Api.Controllers
         /// The command containing the property details to be created.
         /// Returns the unique identifier (GUID) of the newly created property if successful.
         /// If validation errors occur, returns a 400 Bad Request with the errors.
+        ///         /// If the property is not found, returns a 404 Not Found.
         /// If an unexpected error occurs, returns a 500 Internal Server Error.
         [HttpPost("create_property")]
         public async Task<ActionResult<Guid>> CreateProperty(
@@ -36,6 +37,10 @@ namespace Million.Technical.Test.Api.Controllers
             catch (FluentValidation.ValidationException ex)
             {
                 return BadRequest(ex.Errors.Select(e => new { e.PropertyName, e.ErrorMessage }));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (Exception)
             {
