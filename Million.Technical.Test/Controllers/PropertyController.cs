@@ -19,6 +19,11 @@ namespace Million.Technical.Test.Api.Controllers
             _mediator = mediator;
         }
 
+        /// Creates a new property.
+        /// The command containing the property details to be created.
+        /// Returns the unique identifier (GUID) of the newly created property if successful.
+        /// If validation errors occur, returns a 400 Bad Request with the errors.
+        /// If an unexpected error occurs, returns a 500 Internal Server Error.
         [HttpPost("create_property")]
         public async Task<ActionResult<Guid>> CreateProperty(
             [FromBody] CreatePropertyCommand command)
@@ -39,6 +44,12 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
+        /// Adds an image to a property.
+        /// The command containing the property ID and image details.
+        /// Returns the unique identifier (GUID) of the newly added image if successful.
+        /// If validation errors occur, returns a 400 Bad Request with the errors.
+        /// If the property is not found, returns a 404 Not Found.
+        /// If an unexpected error occurs, returns a 500 Internal Server Error.
         [HttpPost("add_property_image")]
         public async Task<ActionResult<Guid>> AddPropertyImage(
             [FromForm] AddPropertyImageCommand command)
@@ -63,6 +74,12 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
+        /// Creates a trace for a property.
+        /// The command containing the property trace details.
+        /// Returns the unique identifier (GUID) of the newly created property trace if successful.
+        /// If validation errors occur, returns a 400 Bad Request with the errors.
+        /// If the property is not found, returns a 404 Not Found.
+        /// If an unexpected error occurs, returns a 500 Internal Server Error.
         [HttpPost("create_property_trace")]
         public async Task<ActionResult<Guid>> CreatePropertyTrace(
            [FromBody] CreatePropertyTraceCommand command)
@@ -87,6 +104,12 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
+        /// Changes the price of a property.
+        /// The command containing the property ID and the new price.
+        /// Returns a confirmation message if successful.
+        /// If validation errors occur, returns a 400 Bad Request with the errors.
+        /// If the property is not found, returns a 404 Not Found.
+        /// If an unexpected error occurs, returns a 500 Internal Server Error.
         [HttpPut("change_property_price")]
         public async Task<ActionResult<string>> ChangePropertyPrice(
             [FromBody] ChangePropertyPriceCommand command)
@@ -111,6 +134,12 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
+        /// Updates the details of a property.
+        /// The command containing the updated property details.
+        /// Returns the unique identifier (GUID) of the updated property if successful.
+        /// If validation errors occur, returns a 400 Bad Request with the errors.
+        /// If the property is not found, returns a 404 Not Found.
+        /// If an unexpected error occurs, returns a 500 Internal Server Error.
         [HttpPut("update_property")]
         public async Task<ActionResult<Guid>> UpdateProperty(
             [FromBody] UpdatePropertyCommand command)
@@ -135,6 +164,12 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
+        /// Retrieves a specific image of a property by its ID.
+        /// propertyID The unique identifier of the property.
+        /// imageId The unique identifier of the image.
+        /// Returns the image as a JPEG file if found.
+        /// If the image is not found, returns a 404 Not Found.
+        /// If an unexpected error occurs, returns a 500 Internal Server Error.
         [HttpGet("property/{propertyId}/image/{imageId}")]
         [Produces("image/jpeg")]
         public async Task<IActionResult> GetPropertyImage(Guid propertyId, Guid imageId)
@@ -161,9 +196,13 @@ namespace Million.Technical.Test.Api.Controllers
             }
         }
 
+        /// Retrieves a list of properties filtered by specific criteria.
+        ///The query containing the filter criteria.
+        /// Returns a list of properties matching the criteria.
+        /// If an unexpected error occurs, returns a 500 Internal Server Error with error details.
         [HttpGet("get_properies_by_filters")]
         public async Task<ActionResult<IEnumerable<PropertyDetailDto>>> GetProperties(
-       [FromQuery] GetPropertiesQuery query)
+           [FromQuery] GetPropertiesQuery query)
         {
             try
             {

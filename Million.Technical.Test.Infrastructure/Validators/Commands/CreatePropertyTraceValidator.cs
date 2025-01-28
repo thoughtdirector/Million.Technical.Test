@@ -17,7 +17,7 @@ namespace Million.Technical.Test.Infrastructure.Validators.Commands
 
             RuleFor(x => x.DateSale)
                 .NotEmpty().WithMessage("Sale date is required")
-                .LessThanOrEqualTo(DateTime.UtcNow)
+                .LessThan(DateTime.UtcNow)
                 .WithMessage("Sale date cannot be in the future");
 
             RuleFor(x => x.Name)

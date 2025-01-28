@@ -22,10 +22,10 @@ namespace Million.Technical.Test.Application.Commands.Handlers
             {
                 IdPropertyTrace = Guid.NewGuid(),
                 IdProperty = command.PropertyId,
-                DateSale = command.DateSale,
+                DateSale = command.DateSale!.Value,
                 Name = command.Name,
-                Value = command.Value,
-                Tax = command.Tax
+                Value = command.Value!.Value,
+                Tax = command.Tax!.Value
             };
 
             PropertyTrace result = await _traceRepository.CreateAsync(propertyTrace);

@@ -29,7 +29,7 @@ namespace Million.Technical.Test.Application.Commands.Handlers
                 IdOwner = Guid.NewGuid(),
                 Name = command.Name,
                 Address = command.Address,
-                Birthday = command.Birthday,
+                Birthday = command.Birthday!.Value,
                 Photo = photoData
             };
 

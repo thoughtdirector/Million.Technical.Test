@@ -64,7 +64,7 @@ namespace Million.Technical.Test.Infrastructure.Validators.Commands
             When(x => x.Trace != null, () =>
             {
                 RuleFor(x => x.Trace!.DateSale)
-                    .LessThanOrEqualTo(DateTime.UtcNow)
+                    .LessThan(DateTime.UtcNow)
                     .WithMessage("Sale date cannot be in the future");
 
                 RuleFor(x => x.Trace!.Name)

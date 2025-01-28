@@ -6,9 +6,9 @@ namespace Million.Technical.Test.Application.Commands
     {
         public Guid? Id { get; init; }
         public required Guid PropertyId { get; init; }
-        public required DateTime DateSale { get; init; }
-        public required string Name { get; init; }
-        public required decimal Value { get; init; }
-        public required decimal Tax { get; init; }
+        public DateTime? DateSale { get; init; }
+        public string? Name { get; init; }
+        public decimal? Value { get; init; }
+        public decimal? Tax { get; init; }
     }
 }
